@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+
+<h1 class="text-center">Pallet Town Pet Adoption</h1>
+
+{% for pet in pets %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <img class="img-fluid" src="{{pet.photo_url}}" alt="Image of {{pet.name}}, a {{pet.species}}">
+            <p><a href="/pet/{{pet.name}}">{{pet.name}}</a> is {{pet.available}}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<form>
+    <button>Add Pet</button>
+</form>
+
+{% endblock %}
