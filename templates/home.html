@@ -6,8 +6,9 @@
 
 <h1 class="text-center">Pallet Town Pet Adoption</h1>
 
-{% for pet in pets %}
 <div class="container">
+    {% for pet in pets %}
+
     <div class="row">
         <div class="col-sm-4">
             <img class="img-fluid" src="{{pet.photo_url}}" alt="Image of {{pet.name}}, a {{pet.species}}">
