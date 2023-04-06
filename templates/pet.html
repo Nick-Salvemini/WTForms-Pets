@@ -4,6 +4,38 @@
 
 {% block content %}
 
-<h1>{{pet.name}}</h1>
+<h1 class="text-center">{{pet.name}}</h1>
+<div class="container">
+    <img class="img-fluid" src="{{pet.photo_url}}" alt="Image of {{pet.name}}, a {{pet.species}}">
+    <p class="text-center">{{pet.name}} is a {{pet.age}} year old {{pet.species}}.</p>
+    {% if pet.notes != None %}
+    <p class="text-center">Notes: {{pet.notes}}</p>
+    {% endif %}
+    {% if pet.available == True %}
+    <p class="text-center">Availability: {{pet.name}} is currently available!</p>
+    {% else %}
+    <p class="text-center">Availability: {{pet.name}} is not available at the moment.</p>
+    {% endif %}
+</div>
 
+<div class="container justify-content-center">
+    <div class="row justify-content-center">
+        <div class="form-group col-md-8">
+            <form method="POST">
+                {{ form.hidden_tag() }}
+                {% for field in form if field.widget.input_type != 'hidden'%}
+                {{field.label}}
+                {{field(class_="form-control")}}
+                {% for err in field.errors %}
+                <small class="form-text text-danger">
+                    {{err}}
+                </small>
+                {% endfor %}
+                {% endfor %}
+                <button class="btn  btn-success  btn-lg">Edit</button>
+                <a href="/" class="btn btn-danger btn-lg">Home</a>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}

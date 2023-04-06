@@ -13,7 +13,8 @@
 
         <div class="col-sm-4">
             <img class="img-fluid" src="{{pet.photo_url}}" alt="Image of {{pet.name}}, a {{pet.species}}">
-            <p><a href="/pets/{{pet.name}}">{{pet.name}}</a> is {% if pet.available == True %}Available!{% else %}Not
+            <p><a href="/pets/{{pet.name}}/{{pet.id}}">{{pet.name}}</a> is {% if pet.available == True %}Available!{%
+                else %}Not
                 Available{% endif %}</p>
         </div>
 
