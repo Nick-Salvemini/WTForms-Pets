@@ -23,15 +23,46 @@ def home():
 
 @app.route('/pets/<pet_name>/<int:pet_id>', methods=['GET', 'POST'])
 def pet(pet_name, pet_id):
-    form = PetForm()
+    
     pet = Pet.query.get(pet_id)
+    form = PetForm(obj=pet)
 
     if form.validate_on_submit():
-        name = form.pet_name.data
+        pet.name = form.name.data
+        pet.species = form.species.data
+        pet.photo_url = form.photo_url.data
+        pet.age = form.age.data
+        pet.notes = form.notes.data
+
+        db.session.commit()
+        name = pet.name
+        id = pet.id
+        return redirect(f'/pets/{name}/{id}')
+    else:
+        return render_template('pet.html', form=form, pet=pet)
+    
+@app.route('/delete/<int:pet_id>')
+def delete_pet(pet_id):
+    pet = Pet.query.get(pet_id)
+    db.session.delete(pet)
+    db.session.commit()
+    return redirect('/')
+
+@app.route('/new_pet', methods=['GET', 'POST'])
+def add_pet():
+    form = PetForm()
+
+    if form.validate_on_submit():
+        name = form.name.data
         species = form.species.data
         photo_url = form.photo_url.data
         age = form.age.data
         notes = form.notes.data
-        return redirect(f'/pets/{name}/{pet.id}')
+        availability = form.availability.data
+
+        new_pet = Pet(name=name, species=species, phot_url=photo_url, age=age, notes=notes, availability=availability)
+        db.session.add(new_pet)
+        db.session.commit()
+        return redirect('/')
     else:
-        return render_template('pet.html', form=form, pet=pet)
+        return render_template('new_pet.html', form=form)

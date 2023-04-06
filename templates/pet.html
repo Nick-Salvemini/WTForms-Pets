@@ -18,6 +18,8 @@
     {% endif %}
 </div>
 
+
+<h2 class="text-center">Need to Edit {{pet.name}}?</h2>
 <div class="container justify-content-center">
     <div class="row justify-content-center">
         <div class="form-group col-md-8">
@@ -33,7 +35,8 @@
                 {% endfor %}
                 {% endfor %}
                 <button class="btn  btn-success  btn-lg">Edit</button>
-                <a href="/" class="btn btn-danger btn-lg">Home</a>
+                <a href="/" class="btn btn-warning btn-lg">Home</a>
+                <a href="/delete/{{pet.id}}" class="btn btn-danger btn-lg">Delete</a>
             </form>
         </div>
     </div>
