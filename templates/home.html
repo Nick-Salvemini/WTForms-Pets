@@ -7,15 +7,18 @@
 <h1 class="text-center">Pallet Town Pet Adoption</h1>
 
 <div class="container">
-    {% for pet in pets %}
-
     <div class="row">
+        {% for pet in pets %}
+
+
         <div class="col-sm-4">
             <img class="img-fluid" src="{{pet.photo_url}}" alt="Image of {{pet.name}}, a {{pet.species}}">
-            <p><a href="/pet/{{pet.name}}">{{pet.name}}</a> is {{pet.available}}</p>
+            <p><a href="/pets/{{pet.name}}">{{pet.name}}</a> is {% if pet.available == True %}Available!{% else %}Not
+                Available{% endif %}</p>
         </div>
+
+        {% endfor %}
     </div>
-    {% endfor %}
 </div>
 <form>
     <button>Add Pet</button>

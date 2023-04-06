@@ -23,5 +23,5 @@ def home():
 
 @app.route('/pets/<pet_name>')
 def pet(pet_name):
-    pet = Pet.query.filter(name=pet_name)
+    pet = Pet.query.filter(Pet.name == pet_name)
     return render_template('pet.html', pet=pet)
