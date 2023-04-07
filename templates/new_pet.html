@@ -3,24 +3,71 @@
 {% block title %}Add a New Pet{% endblock %}
 
 {% block content %}
-<h1 class="text-center">Add A New Pet!</h1>
+<h1 class="text-center my-4">Add A New Pet!</h1>
 
 <div class="container justify-content-center">
     <div class="row justify-content-center">
         <div class="form-group col-md-8">
             <form method="POST">
                 {{form.hidden_tag()}}
-                {% for field in form if field.widget.input_type != 'hidden'%}
-                {{field.label}}
-                {{field(class_="form-control")}}
-                {% for err in field.errors %}
-                <small class="form-text text-danger">
-                    {{err}}
-                </small>
-                {% endfor %}
-                {% endfor %}
-                <button class="btn  btn-success  btn-lg">Add New Pet</button>
-                <a href="/" class="btn btn-warning btn-lg">Home</a>
+                <div class="form-group mt-3">
+                    {{form.name.label}}
+                    {{form.name(class_='form-control')}}
+                    {% for err in form.name.errors %}
+                    <small class="form-text text-danger">
+                        {{err}}
+                    </small>
+                    {% endfor %}
+                </div>
+                <div class="form-group mt-3">
+                    {{form.species.label}}
+                    {{form.species(class_='form-control')}}
+                    {% for err in form.species.errors %}
+                    <small class="form-text text-danger">
+                        {{err}}
+                    </small>
+                    {% endfor %}
+                </div>
+                <div class="form-group mt-3">
+                    {{form.photo_url.label}}
+                    {{form.photo_url(class_='form-control')}}
+                    {% for err in form.photo_url.errors %}
+                    <small class="form-text text-danger">
+                        {{err}}
+                    </small>
+                    {% endfor %}
+                </div>
+                <div class="form-group mt-3">
+                    {{form.age.label}}
+                    {{form.age(class_='form-control')}}
+                    {% for err in form.age.errors %}
+                    <small class="form-text text-danger">
+                        {{err}}
+                    </small>
+                    {% endfor %}
+                </div>
+                <div class="form-group mt-3">
+                    {{form.notes.label}}
+                    {{form.notes(class_='form-control')}}
+                    {% for err in form.notes.errors %}
+                    <small class="form-text text-danger">
+                        {{err}}
+                    </small>
+                    {% endfor %}
+                </div>
+                <div class="form-check mt-3">
+                    {{form.available.label}}
+                    {{form.available(class_="form-check-input")}}
+                    {% for err in form.available.errors %}
+                    <small class="form-text text-danger">
+                        {{err}}
+                    </small>
+                    {% endfor %}
+                </div>
+                <div class="mt-3">
+                    <button class="btn  btn-success  btn-lg">Add New Pet</button>
+                    <a href="/" class="btn btn-warning btn-lg">Home</a>
+                </div>
             </form>
         </div>
     </div>

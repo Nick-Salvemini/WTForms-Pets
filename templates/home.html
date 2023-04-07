@@ -4,8 +4,10 @@
 
 {% block content %}
 
-<h1 class="text-center">Pallet Town Pet Adoption</h1>
-
+<h1 class="text-center my-4">Pallet Town Pet Adoption</h1>
+<div class="text-center mb-4">
+    <a href="/new_pet" class="btn btn-success btn-lg text-center" role="button">Add a New Pet</a>
+</div>
 <div class="container">
     <div class="row">
         {% for pet in pets %}
@@ -21,8 +23,6 @@
         {% endfor %}
     </div>
 </div>
-<form>
-    <a href="/new_pet" class="btn  btn-success  btn-lg">Add a New Pet</a>
-</form>
+
 
 {% endblock %}

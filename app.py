@@ -58,9 +58,9 @@ def add_pet():
         photo_url = form.photo_url.data
         age = form.age.data
         notes = form.notes.data
-        availability = form.availability.data
+        available = form.available.data
 
-        new_pet = Pet(name=name, species=species, phot_url=photo_url, age=age, notes=notes, availability=availability)
+        new_pet = Pet(name=name, species=species, photo_url=photo_url, age=age, notes=notes, available=available)
         db.session.add(new_pet)
         db.session.commit()
         return redirect('/')
